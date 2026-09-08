@@ -12,8 +12,7 @@ services:
       dockerfile: Dockerfile
     image: almagest/gmweb:latest
     networks:
-      coolify:
-        external: true
+      - coolify
     environment:
       - PUID=1000
       - PGID=1000
@@ -32,9 +31,17 @@ services:
       # (/data/coolify/proxy/dynamic/gmweb-transport.yaml on the Coolify
       # host) - reference it with @file, not @docker.
       - traefik.http.services.gmweb.loadbalancer.serversTransport=gmweb-h1@file
+networks:
+  coolify:
+    external: true
 
 volumes:
   gmweb-config:
     driver: local
   gmweb-local:
     driver: local
+
+
+
+
+
