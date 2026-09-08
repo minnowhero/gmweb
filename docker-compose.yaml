@@ -11,6 +11,9 @@ services:
       context: .
       dockerfile: Dockerfile
     image: almagest/gmweb:latest
+    networks:
+      coolify:
+        external: true
     environment:
       - PUID=1000
       - PGID=1000
